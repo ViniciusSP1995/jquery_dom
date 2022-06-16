@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+	<!--    <script src="js/jquery-3.3.1.js"></script>-->
+	<script
+	src="https://code.jquery.com/jquery-3.3.1.js"
+	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+	crossorigin="anonymous"></script>
+	<style>
+	
+	
+</style>
+
+
+</head>
+<body>
+	
+	<section class="container section">
+		<h1>Percorrer e DOM</h1>
+		<p>percorrendo o DOM utilizando da jQuery</p>
+
+		<div class="container">
+
+			<ul class="enfase container">
+				<li class="enfase2">item 1</li>
+				<li class="enfase2">item 2</li>
+				<li class="enfase2 enfase4">item 3 com enfase4</li>
+				<li class="enfase2">item 4</li>
+				<li class="enfase2">item 5</li>
+				<li>
+					<ul>
+						<li class="enfase2 enfase3">item com enfase2 e enfase3.</li>
+					</ul>
+
+				</li>
+			</ul>
+		</div>
+	</section>
+
+
+	<script>
+        
+        let lis = $('ul.enfase').children('li')
+        console.log(lis)
+
+		console.log( $('ul.enfase').find('li') ) // find percorre por tda estrutura hierarquica
+        
+		console.log( $('li').parent()) //parent pega o elemeno ancestral
+		
+		console.log( $('.enfase4').parent()) 
+		console.log( $('.enfase3').parents('.container')) // vai buscando em seus ancestrais até achar o container
+		console.log( $('.enfase3').closest('.container')) // vai procurar o elemento passado como parametro. Quando encontrar, vai parar
+		console.log( $('.enfase').parentsUntil('.section')) // vai buscando os pais ateé q encontre um determinado seletor 
+
+		console.log( $('.enfase4').prev() ) //mostra o anterior
+		console.log( $('.enfase4').next() ) //mostra o posterior
+		console.log( $('.enfase4').prevAll() ) //todos os anteriores
+		console.log( $('.enfase4').nextAll() ) //todos os posteriores
+		console.log( $('.enfase4').siblings() ) //pega todos os irmãos
+
+		console.log( $('ul.enfase li').first().nextUntil('.enfase4').add('ul.enfase li.enfase4') ) //pega só a primeira li e busca os proximos até encontra o enfase 4 
+	</script>
+	</body>
+	</html>
